@@ -22,20 +22,27 @@ public class CrimeLab {
         return sCrimeLab;
     }
 
+
+
     private CrimeLab(Context context) {
         mCrimes = new ArrayList<>();
 //        mCrimes = new LinkedHashMap<>();
-//        for (int i = 0; i < 100; i++) {
-//            Crime crime = new Crime();
-//            crime.setTitle("Crime #" + i);
-//            crime.setSolved(i % 2 == 0); // Для каждого второго объекта
-//            mCrimes.add(crime);
-////            mCrimes.put(crime.getId(), crime);
-//        }
+        for (int i = 0; i < 100; i++) {
+            Crime crime = new Crime();
+            crime.setTitle("Crime #" + i);
+            crime.setSolved(i % 2 == 0); // Для каждого второго объекта
+            mCrimes.add(crime);
+//            mCrimes.put(crime.getId(), crime);
+        }
     }
 
     public void addCrime(Crime c) {
         mCrimes.add(c);
+    }
+
+    public void deleteCrime(UUID id) {
+        Crime crime = getCrime(id);
+        mCrimes.remove(crime);
     }
 
     public List<Crime> getCrimes() {
